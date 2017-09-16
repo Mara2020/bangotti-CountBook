@@ -15,14 +15,14 @@ public class Item {
 
     public Item(String name, int initialCount) {
         this.name = name;
-        this.date = new Date();
+        this.date = new Date(System.currentTimeMillis());
         this.initialCount = initialCount;
         this.currentCount = initialCount;
     }
 
     public Item(String name, int initialCount, String comment) {
         this.name = name;
-        this.date = new Date();
+        this.date = new Date(System.currentTimeMillis());
         this.initialCount = initialCount;
         this.currentCount = initialCount;
         this.comment = comment;
