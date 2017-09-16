@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">bangotti-CountBook</string>
+    <string name="add_new_button">Add Item</string>
+    <string name="add_one_button">+</string>
+    <string name="subtract_one_button">-</string>
+    <string name="delete_button">Delete</string>
+    <string name="save_button">Save</string>
+    <string name="edit_button">Edit</string>
+
+    <string name="total_str">Total</string>
+    <string name="name_str">Name</string>
+    <string name="name_help">Name of item</string>
+    <string name="date_str">Date</string>
+    <string name="current_str">Current</string>
+    <string name="initial_help">Initial value</string>
+    <string name="initial_str">Initial</string>
+    <string name="Comment_str">Comment</string>
 </resources>
