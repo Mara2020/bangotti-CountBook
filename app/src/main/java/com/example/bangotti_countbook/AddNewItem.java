@@ -36,7 +36,7 @@ public class AddNewItem extends AppCompatActivity {
 
         if (properEntry) {
             initialCount = Integer.parseInt(number);
-            Item item = new Item(name,initialCount);
+            Item item = new Item(name, initialCount, comment);
             finish();
         }
 
