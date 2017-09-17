@@ -1,9 +1,16 @@
 package com.example.bangotti_countbook;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import com.google.gson.Gson;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class AddNewItem extends AppCompatActivity {
 
@@ -37,6 +44,13 @@ public class AddNewItem extends AppCompatActivity {
         if (properEntry) {
             initialCount = Integer.parseInt(number);
             Item item = new Item(name, initialCount, comment);
+            SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+            SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+
+            Gson gson = new Gson();
+            String json = gson.toJson(item);
+            prefsEditor.putString("MyObject",json);
+            prefsEditor.commit();
             finish();
         }
 
