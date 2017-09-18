@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddNewItem extends AppCompatActivity {
 
@@ -18,6 +20,7 @@ public class AddNewItem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_item);
+
     }
 
     public void saveItem(View View) {
@@ -25,6 +28,22 @@ public class AddNewItem extends AppCompatActivity {
         int initialCount;
         Boolean properEntry = true;
 
+        // pull previous list
+        SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+        Gson gson = new Gson();
+        List<Item> itemList = new ArrayList<Item>();
+        String json;
+        try {
+            json = appSharedPrefs.getString("MyObject", "");
+            Type type = new TypeToken<List<Item>>() {}.getType();
+            itemList = gson.fromJson(json, type);
+        } catch (Exception e) {
+            itemList = new ArrayList<Item>();
+            itemList.add(new Item("test",1,"comment1"));
+        }
+
+        // grab all values
         EditText editTextName = (EditText) findViewById(R.id.editText);
         EditText editTextInitialCount = (EditText) findViewById(R.id.editText2);
         EditText editTextComment = (EditText) findViewById(R.id.editText5);
@@ -44,11 +63,9 @@ public class AddNewItem extends AppCompatActivity {
         if (properEntry) {
             initialCount = Integer.parseInt(number);
             Item item = new Item(name, initialCount, comment);
-            SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-            SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+            itemList.add(item);
 
-            Gson gson = new Gson();
-            String json = gson.toJson(item);
+            json = gson.toJson(itemList);
             prefsEditor.putString("MyObject",json);
             prefsEditor.commit();
             finish();

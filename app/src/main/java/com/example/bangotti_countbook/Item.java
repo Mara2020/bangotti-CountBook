@@ -7,11 +7,9 @@ import java.util.Date;
  */
 
 public class Item {
-    private String name;
+    private String name, comment;
     private Date date;
-    private int initialCount;
-    private int currentCount;
-    private String comment;
+    private int initialCount, currentCount;
 
     public Item(String name, int initialCount) {
         this.name = name;
@@ -40,20 +38,45 @@ public class Item {
         return date;
     }
 
+    public Date setDate() {
+        return date;
+    }
+
+    public String setName() {
+        return name;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public String setComment() {
+        return comment;
     }
 
     public String getComment() {
         return comment;
     }
 
+    public int setCurrentCount() {
+        return currentCount;
+    }
+
     public int getCurrentCount() {
         return currentCount;
     }
 
+    public int setInitialCount() {
+        return initialCount;
+    }
+
     public int getInitialCount() {
         return initialCount;
+    }
+
+    @Override
+    public String toString() {
+        return name + "    " + Integer.toString(currentCount) + "    " + date.toString();
     }
 
 }
