@@ -35,40 +35,40 @@ public class Item {
         this.currentCount -= 1;
     }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public Date getDate() {
         return date;
     }
 
-    public Date setDate() {
-        return date;
-    }
-
-    public String setName() {
-        return name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
         return name;
     }
 
-    public String setComment() {
-        return comment;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getComment() {
         return comment;
     }
 
-    public int setCurrentCount() {
-        return currentCount;
+    public void setCurrentCount(int currentCount) {
+        this.currentCount = currentCount;
     }
 
     public int getCurrentCount() {
         return currentCount;
     }
 
-    public int setInitialCount() {
-        return initialCount;
+    public void setInitialCount(int initialCount) {
+        this.initialCount = initialCount;
     }
 
     public int getInitialCount() {
