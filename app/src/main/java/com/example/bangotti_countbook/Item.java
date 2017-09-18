@@ -1,5 +1,6 @@
 package com.example.bangotti_countbook;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -76,7 +77,9 @@ public class Item {
 
     @Override
     public String toString() {
-        return name + "    " + Integer.toString(currentCount) + "    " + date.toString();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String newDateString = sdf.format(date);
+        return name + "\t\t\t\t\t" + Integer.toString(currentCount) + "\t\t\t\t\t" + newDateString;
     }
 
 }
