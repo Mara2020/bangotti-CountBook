@@ -51,11 +51,7 @@ public class ViewCurrentItem extends AppCompatActivity {
         TextView currentCountView = (TextView) findViewById(R.id.currentView);
         TextView dateView = (TextView) findViewById(R.id.dateView);
         nameView.setText(currentItem.getName());
-        if (currentItem.getComment().isEmpty()) {
-            commentView.setText("no comment");
-        } else {
-            commentView.setText(currentItem.getComment());
-        }
+        commentView.setText(currentItem.getComment());
         initialCountView.setText(Integer.toString(currentItem.getInitialCount()));
         currentCountView.setText(Integer.toString(currentItem.getCurrentCount()));
         dateView.setText(currentItem.getDate());
