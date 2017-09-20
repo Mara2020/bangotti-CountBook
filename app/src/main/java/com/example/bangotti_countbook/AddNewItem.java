@@ -44,9 +44,9 @@ public class AddNewItem extends AppCompatActivity {
         }
 
         // grab all values
-        EditText editTextName = (EditText) findViewById(R.id.editText);
-        EditText editTextInitialCount = (EditText) findViewById(R.id.editText2);
-        EditText editTextComment = (EditText) findViewById(R.id.editText5);
+        EditText editTextName = (EditText) findViewById(R.id.nameItem);
+        EditText editTextInitialCount = (EditText) findViewById(R.id.initialValue);
+        EditText editTextComment = (EditText) findViewById(R.id.commentValue);
         name = editTextName.getText().toString();
         number = editTextInitialCount.getText().toString();
         comment = editTextComment.getText().toString();

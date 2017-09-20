@@ -39,8 +39,9 @@ public class Item {
         this.date = date;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(date);
     }
 
     public void setName(String name) {

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -28,6 +29,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         itemListView = (ListView) findViewById(R.id.itemListView);
+
+        itemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this, EditCurrentItem.class);
+                intent.putExtra("position",i);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -62,5 +72,11 @@ public class MainActivity extends AppCompatActivity {
     public void addItem(View View) {
         Intent intent = new Intent(this, AddNewItem.class);
         startActivity(intent);
+    }
+
+    /* Called when the user taps an individual item */
+    public void editItem(View View, int position) {
+        Intent intent = new Intent(this, EditCurrentItem.class);
+
     }
 }
