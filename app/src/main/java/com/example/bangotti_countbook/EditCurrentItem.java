@@ -12,7 +12,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +25,7 @@ public class EditCurrentItem extends AppCompatActivity {
     private String json;
     private EditText editTextName, editTextComment, editTextInitialCount, editTextCurrentCount;
     TextView dateView;
+    private int oldCurrentValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +50,12 @@ public class EditCurrentItem extends AppCompatActivity {
         editTextComment = (EditText) findViewById(R.id.commentValue);
         editTextInitialCount = (EditText) findViewById(R.id.initialValue);
         editTextCurrentCount = (EditText) findViewById(R.id.currentValue);
-        dateView = (TextView) findViewById(R.id.date);
+        dateView = (TextView) findViewById(R.id.dateView);
         editTextName.setText(currentItem.getName());
         editTextComment.setText(currentItem.getComment());
         editTextInitialCount.setText(Integer.toString(currentItem.getInitialCount()));
         editTextCurrentCount.setText(Integer.toString(currentItem.getCurrentCount()));
+        oldCurrentValue = currentItem.getCurrentCount();
         dateView.setText(currentItem.getDate());
     }
 
@@ -66,7 +67,7 @@ public class EditCurrentItem extends AppCompatActivity {
 
     public void addItem(View view){
         currentItem.incrementCounter();
-        currentItem.setDate(new Date(System.currentTimeMillis()));
+        currentItem.setDate(new Date());
         editTextCurrentCount.setText(Integer.toString(currentItem.getCurrentCount()));
         dateView.setText(currentItem.getDate());
         commitEdits();
@@ -74,7 +75,7 @@ public class EditCurrentItem extends AppCompatActivity {
 
     public void subtractItem(View view) {
         currentItem.decrementCounter();
-        currentItem.setDate(new Date(System.currentTimeMillis()));
+        currentItem.setDate(new Date());
         editTextCurrentCount.setText(Integer.toString(currentItem.getCurrentCount()));
         dateView.setText(currentItem.getDate());
         commitEdits();
@@ -82,15 +83,41 @@ public class EditCurrentItem extends AppCompatActivity {
 
     public void resetCurrentValue(View view) {
         currentItem.setCurrentCount(currentItem.getInitialCount());
-        currentItem.setDate(new Date(System.currentTimeMillis()));
+        currentItem.setDate(new Date());
         editTextCurrentCount.setText(Integer.toString(currentItem.getCurrentCount()));
         dateView.setText(currentItem.getDate());
         commitEdits();
     }
 
     public void saveAllEdits(View view) {
-//        commitEdits();
-//        finish();
+        Boolean properEntry = true;
+
+        if (editTextName.getText().toString().equals("")) {
+            editTextName.setError("Name of item is required!");
+            properEntry = false;
+        }
+        if (editTextInitialCount.getText().toString().equals("")){
+            editTextInitialCount.setError("Initial value is required!");
+            properEntry = false;
+        }
+        if (editTextCurrentCount.getText().toString().equals("")){
+            editTextCurrentCount.setError("Current value is required!");
+            properEntry = false;
+        }
+
+        if (properEntry) {
+            currentItem.setName(editTextName.getText().toString());
+            currentItem.setInitialCount(Integer.parseInt(editTextInitialCount.getText().toString()));
+            if (!(editTextComment.getText().toString().equals(""))) {
+                currentItem.setComment(editTextComment.getText().toString());
+            }
+            if (oldCurrentValue != Integer.parseInt(editTextCurrentCount.getText().toString())) {
+                currentItem.setCurrentCount(Integer.parseInt(editTextCurrentCount.getText().toString()));
+                currentItem.setDate(new Date());
+            }
+            commitEdits();
+            finish();
+        }
     }
 
     public void deleteFromList(View view) {

@@ -40,7 +40,7 @@ public class AddNewItem extends AppCompatActivity {
             itemList = gson.fromJson(json, type);
         } catch (Exception e) {
             itemList = new ArrayList<Item>();
-            itemList.add(new Item("test",1,"comment1"));
+//            itemList.add(new Item("test",1,"comment1"));
         }
 
         // grab all values
@@ -62,7 +62,12 @@ public class AddNewItem extends AppCompatActivity {
 
         if (properEntry) {
             initialCount = Integer.parseInt(number);
-            Item item = new Item(name, initialCount, comment);
+            Item item;
+            if (comment.isEmpty()) {
+                item = new Item(name, initialCount);
+            } else {
+                item = new Item(name, initialCount, comment);
+            }
             itemList.add(item);
 
             json = gson.toJson(itemList);

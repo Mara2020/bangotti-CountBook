@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         itemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MainActivity.this, EditCurrentItem.class);
+                Intent intent = new Intent(MainActivity.this, ViewCurrentItem.class);
                 intent.putExtra("position",i);
                 startActivity(intent);
             }

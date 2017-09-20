@@ -14,14 +14,14 @@ public class Item {
 
     public Item(String name, int initialCount) {
         this.name = name;
-        this.date = new Date(System.currentTimeMillis());
+        this.date = new Date();
         this.initialCount = initialCount;
         this.currentCount = initialCount;
     }
 
     public Item(String name, int initialCount, String comment) {
         this.name = name;
-        this.date = new Date(System.currentTimeMillis());
+        this.date = new Date();
         this.initialCount = initialCount;
         this.currentCount = initialCount;
         this.comment = comment;
@@ -32,7 +32,9 @@ public class Item {
     }
 
     public void decrementCounter() {
-        this.currentCount -= 1;
+        if (this.currentCount > 0) {
+            this.currentCount -= 1;
+        }
     }
 
     public void setDate(Date date) {
