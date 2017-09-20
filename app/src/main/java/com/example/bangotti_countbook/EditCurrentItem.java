@@ -88,4 +88,15 @@ public class EditCurrentItem extends AppCompatActivity {
         commitEdits();
     }
 
+    public void saveAllEdits(View view) {
+//        commitEdits();
+//        finish();
+    }
+
+    public void deleteFromList(View view) {
+        itemList.remove(position);
+        commitEdits();
+        finish();
+    }
+
 }
