@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -12,6 +13,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class EditCurrentItem extends AppCompatActivity {
@@ -20,6 +22,10 @@ public class EditCurrentItem extends AppCompatActivity {
     private SharedPreferences.Editor prefsEditor;
     private Gson gson;
     private List<Item> itemList;
+    private Item currentItem;
+    private String json;
+    private EditText editTextName, editTextComment, editTextInitialCount, editTextCurrentCount;
+    TextView dateView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +37,6 @@ public class EditCurrentItem extends AppCompatActivity {
         appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
-        String json;
         try {
             json = appSharedPrefs.getString("MyObject", "");
             Type type = new TypeToken<List<Item>>() {}.getType();
@@ -39,18 +44,48 @@ public class EditCurrentItem extends AppCompatActivity {
         } catch (Exception e) {
         }
 
-        Item currentItem = itemList.get(position);
-        // set the values
-        EditText editTextName = (EditText) findViewById(R.id.nameItem);
-        EditText editTextComment = (EditText) findViewById(R.id.commentValue);
-        EditText editTextInitialCount = (EditText) findViewById(R.id.initialValue);
-        EditText editTextCurrentCount = (EditText) findViewById(R.id.currentValue);
-        TextView dateView = (TextView) findViewById(R.id.date);
+        currentItem = itemList.get(position);
+        // set the values to be viewed
+        editTextName = (EditText) findViewById(R.id.nameItem);
+        editTextComment = (EditText) findViewById(R.id.commentValue);
+        editTextInitialCount = (EditText) findViewById(R.id.initialValue);
+        editTextCurrentCount = (EditText) findViewById(R.id.currentValue);
+        dateView = (TextView) findViewById(R.id.date);
         editTextName.setText(currentItem.getName());
         editTextComment.setText(currentItem.getComment());
         editTextInitialCount.setText(Integer.toString(currentItem.getInitialCount()));
         editTextCurrentCount.setText(Integer.toString(currentItem.getCurrentCount()));
         dateView.setText(currentItem.getDate());
+    }
+
+    private void commitEdits() {
+        json = gson.toJson(itemList);
+        prefsEditor.putString("MyObject",json);
+        prefsEditor.commit();
+    }
+
+    public void addItem(View view){
+        currentItem.incrementCounter();
+        currentItem.setDate(new Date(System.currentTimeMillis()));
+        editTextCurrentCount.setText(Integer.toString(currentItem.getCurrentCount()));
+        dateView.setText(currentItem.getDate());
+        commitEdits();
+    }
+
+    public void subtractItem(View view) {
+        currentItem.decrementCounter();
+        currentItem.setDate(new Date(System.currentTimeMillis()));
+        editTextCurrentCount.setText(Integer.toString(currentItem.getCurrentCount()));
+        dateView.setText(currentItem.getDate());
+        commitEdits();
+    }
+
+    public void resetCurrentValue(View view) {
+        currentItem.setCurrentCount(currentItem.getInitialCount());
+        currentItem.setDate(new Date(System.currentTimeMillis()));
+        editTextCurrentCount.setText(Integer.toString(currentItem.getCurrentCount()));
+        dateView.setText(currentItem.getDate());
+        commitEdits();
     }
 
 }

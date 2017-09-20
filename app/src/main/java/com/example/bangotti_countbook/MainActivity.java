@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         itemListView = (ListView) findViewById(R.id.itemListView);
 
+        // set the listener so that if you click an item in the list, you can edit it
         itemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -74,9 +75,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /* Called when the user taps an individual item */
-    public void editItem(View View, int position) {
-        Intent intent = new Intent(this, EditCurrentItem.class);
-
-    }
 }
