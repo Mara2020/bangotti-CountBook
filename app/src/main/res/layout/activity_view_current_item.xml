@@ -10,14 +10,14 @@
 
     <TextView
         android:id="@+id/currentView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="94dp"
+        android:layout_height="25dp"
         android:text="currentVal"
         android:textSize="20sp"
-        android:layout_marginTop="19dp"
-        app:layout_constraintTop_toBottomOf="@+id/initialView"
+        android:layout_marginRight="56dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/textView5" />
+        android:layout_marginTop="18dp"
+        app:layout_constraintTop_toBottomOf="@+id/initialView" />
 
     <TextView
         android:id="@+id/dateView"
@@ -32,13 +32,13 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="26dp"
         android:text="@string/current_help"
         android:textSize="20sp"
         android:layout_marginTop="17dp"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintRight_toLeftOf="@+id/currentView"
+        android:layout_marginLeft="46dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
@@ -47,21 +47,22 @@
         android:layout_height="wrap_content"
         android:text="@string/initial_help"
         android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="23dp"
         app:layout_constraintTop_toBottomOf="@+id/dateView"
-        app:layout_constraintRight_toLeftOf="@+id/initialView" />
+        android:layout_marginLeft="65dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/initialView"
         android:layout_width="92dp"
-        android:layout_height="22dp"
+        android:layout_height="23dp"
         android:layout_marginTop="23dp"
         android:text="initialVal"
         android:textSize="20sp"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateView"
-        android:layout_marginRight="58dp" />
+        android:layout_marginEnd="58dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/editButton"

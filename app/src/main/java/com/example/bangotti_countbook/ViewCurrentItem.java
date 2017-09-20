@@ -27,6 +27,11 @@ public class ViewCurrentItem extends AppCompatActivity {
         setContentView(R.layout.activity_view_current_item);
         Bundle extras = getIntent().getExtras();
         position = extras.getInt("position");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         Gson gson = new Gson();
@@ -60,5 +65,6 @@ public class ViewCurrentItem extends AppCompatActivity {
         Intent intent = new Intent(ViewCurrentItem.this, EditCurrentItem.class);
         intent.putExtra("position",position);
         startActivity(intent);
+        finish();
     }
 }
