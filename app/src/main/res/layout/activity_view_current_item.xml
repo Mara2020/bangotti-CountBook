@@ -74,6 +74,7 @@
         android:backgroundTint="@android:color/holo_green_light"
         android:onClick="editItem"
         android:text="@string/edit_button"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -83,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Name"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

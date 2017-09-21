@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/total_str"
-        android:textSize="18sp"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -30,6 +31,7 @@
         android:backgroundTint="@android:color/holo_green_light"
         android:onClick="addItem"
         android:text="@string/add_new_button"
+        android:textSize="18sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemListView" />
 
@@ -41,7 +43,8 @@
         android:layout_marginTop="16dp"
         android:onClick="editItem"
         android:text="totalItemCount_here"
-        android:textSize="18sp"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent" />
 
