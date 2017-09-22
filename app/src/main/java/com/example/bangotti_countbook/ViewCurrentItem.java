@@ -41,12 +41,13 @@ public class ViewCurrentItem extends AppCompatActivity {
         // grab the entire list from shared preferences
         SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         Gson gson = new Gson();
-        List<Item> itemList = new ArrayList<Item>();
+        List<Item> itemList;
         try {
-            String json = appSharedPrefs.getString("MyObject", "");
+            String json = appSharedPrefs.getString("CounterList", "");
             Type type = new TypeToken<List<Item>>() {}.getType();
             itemList = gson.fromJson(json, type);
         } catch (Exception e) {
+            itemList = new ArrayList<Item>();
         }
         // grab the reference to the item object within the list
         Item currentItem = itemList.get(position);

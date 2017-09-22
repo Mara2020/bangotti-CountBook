@@ -37,7 +37,7 @@ public class AddNewItem extends AppCompatActivity {
         List<Item> itemList = new ArrayList<Item>();
         String json;
         try {
-            json = appSharedPrefs.getString("MyObject", "");
+            json = appSharedPrefs.getString("CounterList", "");
             Type type = new TypeToken<List<Item>>() {}.getType();
             itemList = gson.fromJson(json, type);
         } catch (Exception e) {
@@ -74,7 +74,7 @@ public class AddNewItem extends AppCompatActivity {
             itemList.add(item);
 
             json = gson.toJson(itemList);
-            prefsEditor.putString("MyObject",json);
+            prefsEditor.putString("CounterList",json);
             prefsEditor.commit();
             finish();
         }

@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<Item> adapter;
     private Gson gson;
     SharedPreferences appSharedPrefs;
+    SharedPreferences.Editor prefsEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         itemListView = (ListView) findViewById(R.id.itemListView);
         appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
 
         // set the listener so that if you click an item in the list, you can view it
@@ -51,24 +54,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        TextView totalItemCount = (TextView) findViewById(R.id.totalItemCount);
+
         // grab the list from the SharedPreferences
+        List<Item> itemList;
         try {
-            String json = appSharedPrefs.getString("MyObject", "");
+            String json = appSharedPrefs.getString("CounterList", "");
             Type type = new TypeToken<List<Item>>(){}.getType();
-            List<Item> itemList = gson.fromJson(json, type);
-
+            itemList = gson.fromJson(json, type);
             // Capture the total number of items and set the string
-            TextView textView = (TextView) findViewById(R.id.totalItemCount);
-            textView.setText(Integer.toString(itemList.size()));
-
-            // capture the list of items into the display list
-            adapter = new ArrayAdapter<Item>(this, R.layout.list_item, itemList);
-            itemListView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
+            totalItemCount.setText(Integer.toString(itemList.size()));
         }
         catch (Exception e) {
-            throw new RuntimeException();
+            itemList = new ArrayList<Item>();
+            totalItemCount.setText("0");
+            String json = gson.toJson(itemList);
+            prefsEditor.putString("CounterList",json);
+            prefsEditor.commit();
         }
+
+        // capture the list of items into the display list
+        adapter = new ArrayAdapter<Item>(this, R.layout.list_item, itemList);
+        itemListView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     /* Called when the user taps the Add Item button */

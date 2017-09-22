@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,10 +46,11 @@ public class EditCurrentItem extends AppCompatActivity {
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
         try {
-            json = appSharedPrefs.getString("MyObject", "");
+            json = appSharedPrefs.getString("CounterList", "");
             Type type = new TypeToken<List<Item>>() {}.getType();
             itemList = gson.fromJson(json, type);
         } catch (Exception e) {
+            itemList = new ArrayList<Item>();
         }
 
         // grab the reference to the item object within the list
@@ -71,7 +73,7 @@ public class EditCurrentItem extends AppCompatActivity {
     /* Function that saves the new list into shared preferences */
     private void commitEdits() {
         json = gson.toJson(itemList);
-        prefsEditor.putString("MyObject",json);
+        prefsEditor.putString("CounterList",json);
         prefsEditor.commit();
     }
 
