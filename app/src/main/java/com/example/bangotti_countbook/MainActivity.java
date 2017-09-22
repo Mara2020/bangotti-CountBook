@@ -27,16 +27,16 @@ public class MainActivity extends AppCompatActivity {
     private ListView itemListView;
     private ArrayAdapter<Item> adapter;
     private Gson gson;
-    SharedPreferences appSharedPrefs;
-    SharedPreferences.Editor prefsEditor;
+    SharedPreferences sharedPrefs;
+    SharedPreferences.Editor sharedPrefsEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         itemListView = (ListView) findViewById(R.id.itemListView);
-        appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        prefsEditor = appSharedPrefs.edit();
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        sharedPrefsEditor = sharedPrefs.edit();
         gson = new Gson();
 
         // set the listener so that if you click an item in the list, you can view it
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         // grab the list from the SharedPreferences
         List<Item> itemList;
         try {
-            String json = appSharedPrefs.getString("CounterList", "");
+            String json = sharedPrefs.getString("CounterList", "");
             Type type = new TypeToken<List<Item>>(){}.getType();
             itemList = gson.fromJson(json, type);
             // Capture the total number of items and set the string
@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
             itemList = new ArrayList<Item>();
             totalItemCount.setText("0");
             String json = gson.toJson(itemList);
-            prefsEditor.putString("CounterList",json);
-            prefsEditor.commit();
+            sharedPrefsEditor.putString("CounterList",json);
+            sharedPrefsEditor.commit();
         }
 
         // capture the list of items into the display list

@@ -31,13 +31,13 @@ public class AddNewItem extends AppCompatActivity {
         Boolean properEntry = true;
 
         // grab the entire list from shared preferences
-        SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        SharedPreferences.Editor sharedPrefsEditor = sharedPrefs.edit();
         Gson gson = new Gson();
         List<Item> itemList = new ArrayList<Item>();
         String json;
         try {
-            json = appSharedPrefs.getString("CounterList", "");
+            json = sharedPrefs.getString("CounterList", "");
             Type type = new TypeToken<List<Item>>() {}.getType();
             itemList = gson.fromJson(json, type);
         } catch (Exception e) {
@@ -74,8 +74,8 @@ public class AddNewItem extends AppCompatActivity {
             itemList.add(item);
 
             json = gson.toJson(itemList);
-            prefsEditor.putString("CounterList",json);
-            prefsEditor.commit();
+            sharedPrefsEditor.putString("CounterList",json);
+            sharedPrefsEditor.commit();
             finish();
         }
 

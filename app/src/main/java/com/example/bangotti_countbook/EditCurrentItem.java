@@ -23,8 +23,8 @@ import java.util.List;
 * delete button will remove the Item from the List. */
 public class EditCurrentItem extends AppCompatActivity {
     private int position, oldCurrentValue;
-    private SharedPreferences appSharedPrefs;
-    private SharedPreferences.Editor prefsEditor;
+    private SharedPreferences sharedPrefs;
+    private SharedPreferences.Editor sharedPrefsEditor;
     private Gson gson;
     private List<Item> itemList;
     private Item currentItem;
@@ -42,11 +42,11 @@ public class EditCurrentItem extends AppCompatActivity {
         position = extras.getInt("position");
 
         // grab the entire list from shared preferences
-        appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        prefsEditor = appSharedPrefs.edit();
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        sharedPrefsEditor = sharedPrefs.edit();
         gson = new Gson();
         try {
-            json = appSharedPrefs.getString("CounterList", "");
+            json = sharedPrefs.getString("CounterList", "");
             Type type = new TypeToken<List<Item>>() {}.getType();
             itemList = gson.fromJson(json, type);
         } catch (Exception e) {
@@ -73,8 +73,8 @@ public class EditCurrentItem extends AppCompatActivity {
     /* Function that saves the new list into shared preferences */
     private void commitEdits() {
         json = gson.toJson(itemList);
-        prefsEditor.putString("CounterList",json);
-        prefsEditor.commit();
+        sharedPrefsEditor.putString("CounterList",json);
+        sharedPrefsEditor.commit();
     }
 
     /* Called when the user hits the '+' button to increment the current counter by 1
