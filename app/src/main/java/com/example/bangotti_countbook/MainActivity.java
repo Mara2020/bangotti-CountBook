@@ -17,6 +17,10 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.List;
 
+
+/* The purpose of this class is to act as the main page of the app, displaying the total number
+* of counters, the list of counters and an add-to-list button. Counters are referred to by the
+* "Item" class. */
 public class MainActivity extends AppCompatActivity {
 
     private ListView itemListView;

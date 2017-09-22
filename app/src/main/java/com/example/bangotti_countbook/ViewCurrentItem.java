@@ -18,6 +18,9 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+/* The purpose of this class is to be the view page for when a user clicks on a specific counter
+* (item). On this page they can see all of the details of the Item. They can go to the edit view
+* by clicking the edit button at the bottom corner. */
 public class ViewCurrentItem extends AppCompatActivity {
     private int position;
 

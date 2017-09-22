@@ -15,6 +15,11 @@ import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
 
+/* The purpose of this class is to act as the page where users can edit an Item (directly edit
+* all values except for the date). There is a count up (+) and count down (-) button which
+* automatically saves. The save button allows a user to save any changes made on the page.
+* The reset button allows a user to set the current counter value to the initial counter. The
+* delete button will remove the Item from the List. */
 public class EditCurrentItem extends AppCompatActivity {
     private int position, oldCurrentValue;
     private SharedPreferences appSharedPrefs;

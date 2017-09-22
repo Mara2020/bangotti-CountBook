@@ -14,6 +14,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+/* The purpose of this class is to create new Items and add them to the list of counters on the
+* main page. */
 public class AddNewItem extends AppCompatActivity {
 
     @Override

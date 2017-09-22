@@ -7,6 +7,9 @@ import java.util.Date;
  * Created by biancaangotti on 2017-09-16.
  */
 
+
+/* The purpose of this class is to be the object class that represents "counters." The available
+* fields are name, comment, date, initial counter and current counter. */
 public class Item {
     private String name, comment;
     private Date date;
@@ -32,11 +35,15 @@ public class Item {
     }
 
     public void decrementCounter() {
+        // check if the counter is 0 to prevent negative count
         if (this.currentCount > 0) {
             this.currentCount -= 1;
         }
     }
 
+    /* Used by the system for when the current counter is changed and the date needs to be
+    * reset to the current time. This function is never utilized for the user to edit the
+    * date field explicitly. */
     public void setDate(Date date) {
         this.date = date;
     }
