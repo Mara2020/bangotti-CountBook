@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 public class EditCurrentItem extends AppCompatActivity {
-    private int position;
+    private int position, oldCurrentValue;
     private SharedPreferences appSharedPrefs;
     private SharedPreferences.Editor prefsEditor;
     private Gson gson;
@@ -24,16 +24,18 @@ public class EditCurrentItem extends AppCompatActivity {
     private Item currentItem;
     private String json;
     private EditText editTextName, editTextComment, editTextInitialCount, editTextCurrentCount;
-    TextView dateView;
-    private int oldCurrentValue;
+    private TextView dateView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_current_item);
+
+        // grab the index of the item in the list
         Bundle extras = getIntent().getExtras();
         position = extras.getInt("position");
 
+        // grab the entire list from shared preferences
         appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
@@ -44,8 +46,10 @@ public class EditCurrentItem extends AppCompatActivity {
         } catch (Exception e) {
         }
 
+        // grab the reference to the item object within the list
         currentItem = itemList.get(position);
-        // set the values to be viewed
+
+        // set all of the values for the item to be viewed & edited
         editTextName = (EditText) findViewById(R.id.nameItem);
         editTextComment = (EditText) findViewById(R.id.commentValue);
         editTextInitialCount = (EditText) findViewById(R.id.initialValue);
@@ -59,12 +63,15 @@ public class EditCurrentItem extends AppCompatActivity {
         dateView.setText(currentItem.getDate());
     }
 
+    /* Function that saves the new list into shared preferences */
     private void commitEdits() {
         json = gson.toJson(itemList);
         prefsEditor.putString("MyObject",json);
         prefsEditor.commit();
     }
 
+    /* Called when the user hits the '+' button to increment the current counter by 1
+    * (date is updated since current counter was affected) */
     public void addItem(View view){
         currentItem.incrementCounter();
         currentItem.setDate(new Date());
@@ -73,6 +80,8 @@ public class EditCurrentItem extends AppCompatActivity {
         commitEdits();
     }
 
+    /* Called when the user hits the '-' button to decrement the current counter by 1
+    * (date is updated since current counter was affected) */
     public void subtractItem(View view) {
         currentItem.decrementCounter();
         currentItem.setDate(new Date());
@@ -81,6 +90,8 @@ public class EditCurrentItem extends AppCompatActivity {
         commitEdits();
     }
 
+    /* Called when the user hits the 'RESET' button to set the current counter to the initial counter
+    * (date is updated since current counter was affected) */
     public void resetCurrentValue(View view) {
         currentItem.setCurrentCount(currentItem.getInitialCount());
         currentItem.setDate(new Date());
@@ -89,9 +100,13 @@ public class EditCurrentItem extends AppCompatActivity {
         commitEdits();
     }
 
+    /* Called when the user hits the 'SAVE' button update editable values such as
+     * name, inital counter, current counter, and comment
+     * (date is only updated if current counter was affected) */
     public void saveAllEdits(View view) {
         Boolean properEntry = true;
 
+        // throw errors if the user does not input into the mandatory fields (name and counters)
         if (editTextName.getText().toString().equals("")) {
             editTextName.setError("Name of item is required!");
             properEntry = false;
@@ -105,6 +120,7 @@ public class EditCurrentItem extends AppCompatActivity {
             properEntry = false;
         }
 
+        // if all mandatory fields are filled, save changes to the item in the list update shared preferences
         if (properEntry) {
             currentItem.setName(editTextName.getText().toString());
             currentItem.setInitialCount(Integer.parseInt(editTextInitialCount.getText().toString()));
@@ -120,6 +136,7 @@ public class EditCurrentItem extends AppCompatActivity {
         }
     }
 
+    /* Called when the user hits the 'DELETE' button to remove this counter from the list */
     public void deleteFromList(View view) {
         itemList.remove(position);
         commitEdits();

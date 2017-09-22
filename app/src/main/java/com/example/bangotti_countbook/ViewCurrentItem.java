@@ -25,6 +25,8 @@ public class ViewCurrentItem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_current_item);
+
+        // grab the index of the item in the list
         Bundle extras = getIntent().getExtras();
         position = extras.getInt("position");
     }
