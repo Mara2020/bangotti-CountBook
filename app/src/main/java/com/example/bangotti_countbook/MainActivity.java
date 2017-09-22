@@ -5,11 +5,9 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,14 +21,18 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView itemListView;
     private ArrayAdapter<Item> adapter;
+    private Gson gson;
+    SharedPreferences appSharedPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         itemListView = (ListView) findViewById(R.id.itemListView);
+        appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        gson = new Gson();
 
-        // set the listener so that if you click an item in the list, you can edit it
+        // set the listener so that if you click an item in the list, you can view it
         itemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -41,14 +43,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /* Called when user returns to main menu */
     @Override
     protected void onStart() {
         super.onStart();
-        // this is run each time we return to the page
-
-        SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        Gson gson = new Gson();
-
+        // grab the list from the SharedPreferences
         try {
             String json = appSharedPrefs.getString("MyObject", "");
             Type type = new TypeToken<List<Item>>(){}.getType();
@@ -64,12 +63,11 @@ public class MainActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
         }
         catch (Exception e) {
-            //do nothing right now
-            Log.d("info",e.getMessage());
+            throw new RuntimeException();
         }
     }
 
-    /** Called when the user taps the Add Item button */
+    /* Called when the user taps the Add Item button */
     public void addItem(View View) {
         Intent intent = new Intent(this, AddNewItem.class);
         startActivity(intent);

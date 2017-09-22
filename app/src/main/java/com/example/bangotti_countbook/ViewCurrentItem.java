@@ -33,6 +33,7 @@ public class ViewCurrentItem extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        // grab the entire list from shared preferences
         SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         Gson gson = new Gson();
         List<Item> itemList = new ArrayList<Item>();
@@ -42,9 +43,10 @@ public class ViewCurrentItem extends AppCompatActivity {
             itemList = gson.fromJson(json, type);
         } catch (Exception e) {
         }
-
+        // grab the reference to the item object within the list
         Item currentItem = itemList.get(position);
-        // set the values to be viewed
+
+        // set all of the values for the item to be viewed
         TextView nameView = (TextView) findViewById(R.id.nameView);
         TextView commentView = (TextView) findViewById(R.id.commentView);
         TextView initialCountView = (TextView) findViewById(R.id.initialView);
@@ -57,6 +59,7 @@ public class ViewCurrentItem extends AppCompatActivity {
         dateView.setText(currentItem.getDate());
     }
 
+    /* Called when the user taps the Edit Item button - takes user to editable page */
     public void editItem(View view) {
         Intent intent = new Intent(ViewCurrentItem.this, EditCurrentItem.class);
         intent.putExtra("position",position);

@@ -28,7 +28,7 @@ public class AddNewItem extends AppCompatActivity {
         int initialCount;
         Boolean properEntry = true;
 
-        // pull previous list
+        // grab the entire list from shared preferences
         SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
         Gson gson = new Gson();
@@ -40,10 +40,9 @@ public class AddNewItem extends AppCompatActivity {
             itemList = gson.fromJson(json, type);
         } catch (Exception e) {
             itemList = new ArrayList<Item>();
-//            itemList.add(new Item("test",1,"comment1"));
         }
 
-        // grab all values
+        // grab the user's input for the name, comment and initial counter
         EditText editTextName = (EditText) findViewById(R.id.nameItem);
         EditText editTextInitialCount = (EditText) findViewById(R.id.initialValue);
         EditText editTextComment = (EditText) findViewById(R.id.commentValue);
@@ -51,6 +50,7 @@ public class AddNewItem extends AppCompatActivity {
         number = editTextInitialCount.getText().toString();
         comment = editTextComment.getText().toString();
 
+        // throw errors if the user does not input into the mandatory fields (name and initial counter)
         if (name.equals("")) {
             editTextName.setError("Name of item is required!");
             properEntry = false;
@@ -60,6 +60,7 @@ public class AddNewItem extends AppCompatActivity {
             properEntry = false;
         }
 
+        // if all mandatory fields are filled, add item to list and save to shared preferences
         if (properEntry) {
             initialCount = Integer.parseInt(number);
             Item item;

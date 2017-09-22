@@ -41,6 +41,7 @@ public class Item {
         this.date = date;
     }
 
+    /* get the date in the form of a printable string */
     public String getDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(date);
@@ -78,6 +79,7 @@ public class Item {
         return initialCount;
     }
 
+    /* set the string for viewing in the list */
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
