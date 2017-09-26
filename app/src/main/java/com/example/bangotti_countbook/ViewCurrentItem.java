@@ -23,6 +23,9 @@ import java.util.List;
 * by clicking the edit button at the bottom corner. */
 public class ViewCurrentItem extends AppCompatActivity {
     private int position;
+    private List<Item> itemList;
+    private Gson gson;
+    private SharedPreferences sharedPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +42,8 @@ public class ViewCurrentItem extends AppCompatActivity {
         super.onStart();
 
         // grab the entire list from shared preferences
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        Gson gson = new Gson();
-        List<Item> itemList;
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        gson = new Gson();
         try {
             String json = sharedPrefs.getString("CounterList", "");
             Type type = new TypeToken<List<Item>>() {}.getType();

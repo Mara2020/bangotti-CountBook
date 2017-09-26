@@ -17,24 +17,21 @@ import java.util.List;
 /* The purpose of this class is to create new Items and add them to the list of counters on the
 * main page. */
 public class AddNewItem extends AppCompatActivity {
+    private SharedPreferences sharedPrefs;
+    private SharedPreferences.Editor sharedPrefsEditor;
+    private Gson gson;
+    private List<Item> itemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_item);
 
-    }
-
-    public void saveItem(View View) {
-        String name, number, comment;
-        int initialCount;
-        Boolean properEntry = true;
-
         // grab the entire list from shared preferences
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        SharedPreferences.Editor sharedPrefsEditor = sharedPrefs.edit();
-        Gson gson = new Gson();
-        List<Item> itemList = new ArrayList<Item>();
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        sharedPrefsEditor = sharedPrefs.edit();
+        gson = new Gson();
+        itemList = new ArrayList<Item>();
         String json;
         try {
             json = sharedPrefs.getString("CounterList", "");
@@ -43,6 +40,12 @@ public class AddNewItem extends AppCompatActivity {
         } catch (Exception e) {
             itemList = new ArrayList<Item>();
         }
+    }
+
+    public void saveItem(View view) {
+        String name, number, comment;
+        int initialCount;
+        Boolean properEntry = true;
 
         // grab the user's input for the name, comment and initial counter
         EditText editTextName = (EditText) findViewById(R.id.nameItem);
@@ -73,7 +76,7 @@ public class AddNewItem extends AppCompatActivity {
             }
             itemList.add(item);
 
-            json = gson.toJson(itemList);
+            String json = gson.toJson(itemList);
             sharedPrefsEditor.putString("CounterList",json);
             sharedPrefsEditor.commit();
             finish();

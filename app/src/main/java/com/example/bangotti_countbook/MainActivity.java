@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Gson gson;
     SharedPreferences sharedPrefs;
     SharedPreferences.Editor sharedPrefsEditor;
+    private List<Item> itemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         TextView totalItemCount = (TextView) findViewById(R.id.totalItemCount);
 
         // grab the list from the SharedPreferences
-        List<Item> itemList;
         try {
             String json = sharedPrefs.getString("CounterList", "");
             Type type = new TypeToken<List<Item>>(){}.getType();
