@@ -15,13 +15,6 @@ public class Item {
     private Date date;
     private int initialCount, currentCount;
 
-    public Item(String name, int initialCount) {
-        this.name = name;
-        this.date = new Date();
-        this.initialCount = initialCount;
-        this.currentCount = initialCount;
-    }
-
     public Item(String name, int initialCount, String comment) {
         this.name = name;
         this.date = new Date();

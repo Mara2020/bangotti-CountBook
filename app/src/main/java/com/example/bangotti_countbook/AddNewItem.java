@@ -68,12 +68,7 @@ public class AddNewItem extends AppCompatActivity {
         // if all mandatory fields are filled, add item to list and save to shared preferences
         if (properEntry) {
             initialCount = Integer.parseInt(number);
-            Item item;
-            if (comment.isEmpty()) {
-                item = new Item(name, initialCount);
-            } else {
-                item = new Item(name, initialCount, comment);
-            }
+            Item item = new Item(name, initialCount, comment);
             itemList.add(item);
 
             String json = gson.toJson(itemList);
