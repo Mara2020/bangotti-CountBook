@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_53f344b1c520a1de7f4d3577fcbc96ad8a5cdf6d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="57259ae697f899f889b4419c42af4efde6becf9f">
+        <dex dex="/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f18e60fe6c16fb62b3ffb4b7f61364e729374be6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/biancaangotti/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.0/c4ba5371a29ac9b2ad6129b1d39ea38750043eff/gson-2.8.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c4ba5371a29ac9b2ad6129b1d39ea38750043eff">
+        <dex dex="/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.8.0_3bd1130e993802c210f138dfe5fbd036dbd7a9a2/classes.dex" />
+    </item>
+
+</items>
