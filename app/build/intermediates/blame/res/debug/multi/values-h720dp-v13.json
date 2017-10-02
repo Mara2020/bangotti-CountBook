@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 66,
+                    "endOffset": 117
+                },
+                "from": {
+                    "file": "/Users/biancaangotti/.android/build-cache/d35d6472901a90fe2e219f3cdad8bcd3c492b296/output/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 66,
+                        "endOffset": 117
+                    }
+                }
+            }
+        ]
+    }
+]

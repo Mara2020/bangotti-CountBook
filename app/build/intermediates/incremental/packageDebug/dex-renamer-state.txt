@@ -1,0 +1,7 @@
+#Wed Sep 27 18:30:58 MDT 2017
+base.0=/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f18e60fe6c16fb62b3ffb4b7f61364e729374be6
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_53f344b1c520a1de7f4d3577fcbc96ad8a5cdf6d/classes.dex
+base.1=/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_53f344b1c520a1de7f4d3577fcbc96ad8a5cdf6d
+file.0=/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f18e60fe6c16fb62b3ffb4b7f61364e729374be6/classes.dex

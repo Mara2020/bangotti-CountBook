@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher_round.png",
+        "source": "/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png",
+        "source": "/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    }
+]

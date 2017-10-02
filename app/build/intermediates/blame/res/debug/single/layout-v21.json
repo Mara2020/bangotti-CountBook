@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/biancaangotti/.android/build-cache/d35d6472901a90fe2e219f3cdad8bcd3c492b296/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/biancaangotti/.android/build-cache/d35d6472901a90fe2e219f3cdad8bcd3c492b296/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/biancaangotti/.android/build-cache/d35d6472901a90fe2e219f3cdad8bcd3c492b296/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/biancaangotti/Documents/Year_4/CMPUT301/AndroidStudioStuff/bangotti-CountBook/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/biancaangotti/.android/build-cache/d35d6472901a90fe2e219f3cdad8bcd3c492b296/output/res/layout-v21/notification_template_icon_group.xml"
+    }
+]
